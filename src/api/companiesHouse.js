@@ -1,7 +1,7 @@
 // src/api/companiesHouse.js
 import axios from 'axios';
 
-const API_KEY = 'd89caaec-0c36-4e81-8ea7-33520d89c932'; // Replace with your new live Companies House API key
+const API_KEY = process.env.API_KEY; // Replace with your new live Companies House API key
 
 export const fetchCompanies = async (postcode, sicCodes) => {
   // Convert the array of SIC codes to a comma-separated string
