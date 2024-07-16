@@ -1,0 +1,27 @@
+import requests
+
+api_key = 'd89caaec-0c36-4e81-8ea7-33520d89c932'
+query = 'technology'
+
+base_url = 'https://api.companieshouse.gov.uk/search/companies'
+
+start_index = 0
+page_size = 100 
+total_results = None
+
+while total_results is None or start_index < total_results:
+    response = requests.get(
+        base_url,
+        auth=(api_key, ''),
+        params={'q': query, 'start_index': start_index, 'items_per_page': page_size}
+    )
+
+    if response.status_code == 200:
+        data = response.json()
+        total_results = data['total_results']  
+        for company in data['items']:
+            print(company['title'])  
+        start_index += page_size  
+    else:
+        print(f"Error: {response.status_code}")
+        break

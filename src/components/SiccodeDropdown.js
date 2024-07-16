@@ -1,4 +1,3 @@
-// src/components/PostcodeDropdown.js
 import React from 'react';
 import { SicCodes } from '../Lists';
 
